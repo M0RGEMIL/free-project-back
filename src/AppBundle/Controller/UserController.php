@@ -52,7 +52,7 @@ class UserController extends Controller
 	* @Route("/users/signin", name="user_get")
 	* @Method({"POST"})
 	*/
-	public function getUserID()
+	public function getUserID(Request $request)
 	{
 
 		//ici mettre recuperation d'un USER en fonction des identifiants
