@@ -7,9 +7,9 @@ use JMS\Serializer\Annotation as Serializer;
 
 /**
 * @ORM\Entity
-* @ORM\Table(name="user")
+* @ORM\Table
 */
-class User
+class ToDo
 {
 	/**
 	* @ORM\Column(type="integer")
@@ -33,29 +33,4 @@ class User
 	* @Serializer\Groups({"detail", "list"})
 	*/
 	private $password;
-
-	public function getID()
-	{
-		return $this->id;
-	}
-
-	public function getName()
-	{
-		return $this->name;
-	}
-
-	public function setName($name)
-	{
-		$this->name = $name;
-	}
-
-	public function getPassword()
-	{
-		return $this->password;
-	}
-
-	public function setPassword($password)
-	{
-		$this->password = $password;
-	}
 }

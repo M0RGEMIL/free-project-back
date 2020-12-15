@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\User;
+use AppBundle\Entity\Unit;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use JMS\Serializer\SerializationContext;
 
-class UserController extends Controller
+class UnitController extends Controller
 {
 
 	/**
@@ -82,7 +82,7 @@ class UserController extends Controller
 		$em->persist($user);
 		$em->flush();
 
-		return new Response($user->getID(), Response::HTTP_CREATED);
+		return new Response('', Response::HTTP_CREATED);
 	}
 
 }

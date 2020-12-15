@@ -2,37 +2,38 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Message;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
 * @ORM\Entity
 * @ORM\Table(name="user")
 */
-class User
+class Chat
 {
 	/**
 	* @ORM\Column(type="integer")
 	* @ORM\Id
 	* @ORM\GeneratedValue(strategy="AUTO")
-	*
-	* @Serializer\Groups({"list"})
 	*/
 	private $id;
 
 	/**
 	* @ORM\Column(type="text")
-	*
-	* @Serializer\Groups({"detail", "list"})
 	*/
 	private $name;
 
 	/**
-	* @ORM\Column(type="text")
-	*
-	* @Serializer\Groups({"detail", "list"})
+	* @ORM\OneToMany(targetEntity="Message", mappedBy="user", cascade={"persist"})
 	*/
-	private $password;
+	private $messages = [];
+
+	public function __construct()
+	{
+			$this->messages = new ArrayCollection();
+	}
 
 	public function getID()
 	{
@@ -49,13 +50,13 @@ class User
 		$this->name = $name;
 	}
 
-	public function getPassword()
+	public function getMessages()
 	{
-		return $this->password;
+		return $this->messages;
 	}
 
-	public function setPassword($password)
+	public function addMessage($author)
 	{
-		$this->password = $password;
+		$this->author = $author;
 	}
 }
