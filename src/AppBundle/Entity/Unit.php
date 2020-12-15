@@ -21,25 +21,9 @@ class Unit
      */
     private $name;
 
-		/**
-	* @ORM\OneToMany(targetEntity="User", mappedBy="author", cascade={"persist"})
-	*/
- 	private $members;
-
-	public function __construct()
-	{
-			$this->members = new ArrayCollection();
-	}
-
-
  public function getMembers()
  {
 		 return $this->author;
- }
-
- public function addMember(User $user)
- {
-		 $this->members += $user;
  }
 
     public function getId()

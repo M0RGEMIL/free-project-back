@@ -2,13 +2,11 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table()
- *
+ * @ORM\Table(name="user")
  */
 class User
 {
@@ -20,27 +18,14 @@ class User
     private $id;
 
     /**
-     * @ORM\Column
-     */
+    * @ORM\Column(type="text")
+    */
     private $name;
 
     /**
-     * @ORM\Column(type="text")
-     */
+    * @ORM\Column(type="text")
+    */
     private $password;
-
-    // /**
-    //  * @ORM\ManyToOne(targetEntity="Unit",cascade={"all"}, fetch="EAGER")
-    //  */
-		/**
-		 * @ORM\Column(type="text")
-		 */
-    private $unit;
-
-    public function __construct()
-    {
-        // $this->units = new ArrayCollection();
-    }
 
     public function getName()
     {
@@ -61,14 +46,4 @@ class User
     {
         $this->password = $password;
     }
-
-    public function getUnits()
-    {
-        return $this->units;
-    }
-
-		public function setUnits($units)
-		{
-				$this->units = $units;
-		}
 }

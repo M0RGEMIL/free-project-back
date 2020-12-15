@@ -57,35 +57,4 @@ class DefaultController extends Controller
 		return $response;
 	}
 
-	/**
-	* @Route("/signup", name="create_user")
-	* @Method({"POST"})
-	*/
-	public function createUser(Request $request)
-	{
-			$data = $request->getContent();
-			$user = $this->get('jms_serializer')->deserialize($data, 'AppBundle\Entity\User', 'json');
-
-			$em = $this->getDoctrine()->getManager();
-			$em->persist($user);
-			$em->flush();
-
-			return new Response('', Response::HTTP_CREATED);
-	}
-
-	/**
-	* @Route("/getusers", name="get_user")
-	* @Method({"GET"})
-	*/
-	public function returnUser()
-	{
-		$users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
-		$data = $this->get('jms_serializer')->serialize($users, 'json', SerializationContext::create()->setGroups(array('list')));
-
-		$response = new Response($data);
-		$response->headers->set('Content-Type', 'application/json');
-
-		return $response;
-	}
-
 }
